@@ -1,0 +1,5 @@
+<?jelly escape-by-default='true'?>
+<div>
+    Adds a jobChoice parameter that make it possible to select an other job out of a folder, multi branch job or matrix
+    job. It is intended to use with the Copy Artifact Plugin.
+</div>
