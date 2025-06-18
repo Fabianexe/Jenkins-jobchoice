@@ -112,8 +112,6 @@ public class JobChoiceParameterDefinition extends SimpleParameterDefinition {
                 Run lastBuild = j.getLastBuild();
                 if (lastBuild != null) {
                     timeMap.put(it.getName(), lastBuild.getTimestamp());
-                } else {
-                    timeMap.put(it.getName(), null);
                 }
             }
         }
