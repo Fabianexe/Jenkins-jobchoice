@@ -109,7 +109,9 @@ public class JobChoiceParameterDefinition extends SimpleParameterDefinition {
             choices.add(it.getName());
             if (ob instanceof Job) {
                 Job j = (Job) ob;
-                timeMap.put(it.getName(), j.getLastBuild().getTimestamp());
+                if (j.getLastBuild() != null) {
+                    timeMap.put(it.getName(), j.getLastBuild().getTimestamp());
+                }
             }
         }
         this.jobs = jobMap;
