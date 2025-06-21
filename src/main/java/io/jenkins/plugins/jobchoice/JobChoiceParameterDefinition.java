@@ -20,6 +20,10 @@ public class JobChoiceParameterDefinition extends SimpleParameterDefinition {
 
     private final String path;
 
+    public String getPath() {
+        return path;
+    }
+
     private long lastUpdate = 0;
 
     @DataBoundConstructor
