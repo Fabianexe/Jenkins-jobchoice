@@ -109,7 +109,10 @@ public class JobChoiceParameterDefinition extends SimpleParameterDefinition {
             choices.add(it.getName());
             if (ob instanceof Job) {
                 Job j = (Job) ob;
-                timeMap.put(it.getName(), j.getLastBuild().getTimestamp());
+                Run lastBuild = j.getLastBuild();
+                if (lastBuild != null) {
+                    timeMap.put(it.getName(), lastBuild.getTimestamp());
+                }
             }
         }
         this.jobs = jobMap;
@@ -117,6 +120,13 @@ public class JobChoiceParameterDefinition extends SimpleParameterDefinition {
         choices.sort((d1, d2) -> {
             Calendar c1 = timeMap.get(d1);
             Calendar c2 = timeMap.get(d2);
+            if (c1 == null && c2 == null) {
+                return 0;
+            } else if (c1 == null) {
+                return -1;
+            } else if (c2 == null) {
+                return 1;
+            }
             return c1.compareTo(c2);
         });
 
